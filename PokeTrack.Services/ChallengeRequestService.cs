@@ -16,8 +16,8 @@ namespace PokeTrack.Services
             var entity =
                 new ChallengeRequest()
                 {
+                    //Address
                     RequestUser = model.RequestUser,
-                    PokemonList = model.PokemonList,
                     CreatedUtc = DateTimeOffset.Now
                 };
 

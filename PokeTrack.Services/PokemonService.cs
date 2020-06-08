@@ -19,7 +19,6 @@ namespace PokeTrack.Services
 
                      PokemonName = model.PokemonName,
                      PokemonType = model.PokemonType,
-                     MoveList = model.MoveList,
                      DietType = model.DietType,
                      CreatedUtc = DateTimeOffset.Now
                  };
@@ -51,7 +50,6 @@ namespace PokeTrack.Services
 
                                     PokemonName = e.PokemonName,
                                     PokemonType = e.PokemonType,
-                                    MoveList = e.MoveList,
                                     DietType = e.DietType,
                                     CreatedUtc = e.CreatedUtc
                                 }
