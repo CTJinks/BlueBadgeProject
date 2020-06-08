@@ -11,3 +11,23 @@ Individual Pokemon is the instance of a unique Pokemon with its own collection o
 A Challenge Request is a request from one Team for a challenge for a given date. 
 
 We may include the actual Challenge as a stretch goal.
+
+ChallengeRequest
+
+namespace PokeTrack.Data
+{
+    public class ChallengeRequest
+    {
+        public int RequestID { get; set; }
+        [ForeignKey("Team")]
+        public int TeamID { get; set; }
+        public virtual Team ChallengeTeam { get; set; }
+        public string RequestUser { get; set; }
+        public DateTime ChallengeDate { get; set; }
+
+        [Required]
+        public DateTimeOffset CreatedUtc { get; set; }
+
+        public DateTimeOffset? ModifiedUtc { get; set; }
+    }
+}

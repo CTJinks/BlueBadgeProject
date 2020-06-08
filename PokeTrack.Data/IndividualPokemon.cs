@@ -18,8 +18,9 @@ namespace PokeTrack.Data
         [ForeignKey("Move")]
         public int MoveID { get; set; }
         public virtual Move Move { get; set; }
-        public ICollection<IndividualPokemon> PokemonTeam { get; set; } = new List<IndividualPokemon>();
+        public ICollection<Team> PokemonTeams { get; set; } = new List<Team>();
 
+       // public ICollection<PokemonMoves> Moves { get; set; } = new List<PokemonMoves>();
 
     }
 }
