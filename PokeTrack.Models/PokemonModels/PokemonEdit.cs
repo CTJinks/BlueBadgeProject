@@ -1,26 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PokeTrack.Data
+namespace PokeTrack.Models.PokemonModels
 {
-    public class Pokemon
+    public class PokemonEdit
     {
-        [Key]
         public int PokemonID { get; set; }
-
-        [Required]
         public string PokemonName { get; set; }
-        [Required]
         public string PokemonType { get; set; }
-        [Required]
         public string DietType { get; set; }
-        [Required]
-        public DateTimeOffset CreatedUtc { get; set; }
 
-        public DateTimeOffset? ModifiedUtc { get; set; }
     }
 }

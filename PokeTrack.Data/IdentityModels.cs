@@ -37,6 +37,8 @@ namespace PokeTrack.Data
         public DbSet<Pokemon> PokemonDb { get; set; }
         public DbSet<Move> MoveDb { get; set; }
         public DbSet<ChallengeRequest> ChallengeDb { get; set; }
+        public DbSet<IndividualPokemon> IndividualPokemonDb { get; set; }
+        public DbSet<Team> TeamDb { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder

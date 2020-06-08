@@ -1,17 +1,15 @@
-﻿using System;
+﻿using PokeTrack.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PokeTrack.Data
+namespace PokeTrack.Models.IndividualPokemonModels
 {
-    public class Pokemon
+    public class IndividualPokemonCreate
     {
-        [Key]
-        public int PokemonID { get; set; }
-
         [Required]
         public string PokemonName { get; set; }
         [Required]
@@ -19,8 +17,6 @@ namespace PokeTrack.Data
         [Required]
         public string DietType { get; set; }
         [Required]
-        public DateTimeOffset CreatedUtc { get; set; }
-
-        public DateTimeOffset? ModifiedUtc { get; set; }
+        public ICollection<Move> Moves { get; set; }
     }
 }

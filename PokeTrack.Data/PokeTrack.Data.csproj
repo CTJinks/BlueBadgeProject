@@ -86,9 +86,11 @@
   <ItemGroup>
     <Compile Include="ChallengeRequest.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="IndividualPokemon.cs" />
     <Compile Include="Move.cs" />
     <Compile Include="Pokemon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Team.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>

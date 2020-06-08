@@ -55,14 +55,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChallengeRequestModels\ChallengeRequestCreate.cs" />
+    <Compile Include="ChallengeRequestModels\ChallengeRequestDetail.cs" />
+    <Compile Include="ChallengeRequestModels\ChallengeRequestEdit.cs" />
     <Compile Include="ChallengeRequestModels\ChallengeRequestListItem.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="IndividualPokemonModels\IndividualPokemonCreate.cs" />
+    <Compile Include="IndividualPokemonModels\IndividualPokemonDetail.cs" />
+    <Compile Include="IndividualPokemonModels\IndividualPokemonEdit.cs" />
+    <Compile Include="IndividualPokemonModels\IndividualPokemonListItem.cs" />
     <Compile Include="MoveModels\MoveCreate.cs" />
+    <Compile Include="MoveModels\MoveDetail.cs" />
+    <Compile Include="MoveModels\MoveEdit.cs" />
     <Compile Include="MoveModels\MoveListItem.cs" />
     <Compile Include="PokemonModels\PokemonCreate.cs" />
+    <Compile Include="PokemonModels\PokemonDetail.cs" />
+    <Compile Include="PokemonModels\PokemonEdit.cs" />
     <Compile Include="PokemonModels\PokemonListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TeamModels\TeamCreate.cs" />
+    <Compile Include="TeamModels\TeamDetail.cs" />
+    <Compile Include="TeamModels\TeamEdit.cs" />
+    <Compile Include="TeamModels\TeamListItem.cs" />
     <Compile Include="UserModels\UserCreate.cs" />
+    <Compile Include="UserModels\UserDetail.cs" />
+    <Compile Include="UserModels\UserEdit.cs" />
     <Compile Include="UserModels\UserListItem.cs" />
   </ItemGroup>
   <ItemGroup>

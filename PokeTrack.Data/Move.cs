@@ -18,6 +18,7 @@ namespace PokeTrack.Data
         [Required]
         public int Damage { get; set; }
 
+        public virtual ICollection<Move> Moves { get; set; } = new List<Move>();
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
     }
