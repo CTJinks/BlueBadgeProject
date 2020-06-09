@@ -54,7 +54,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChallengeRequestService.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="IndividualPokemonService.cs" />
     <Compile Include="MoveService.cs" />
