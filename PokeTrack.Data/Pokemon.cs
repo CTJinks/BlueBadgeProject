@@ -11,7 +11,6 @@ namespace PokeTrack.Data
     {
         [Key]
         public int PokemonID { get; set; }
-
         [Required]
         public string PokemonName { get; set; }
         [Required]
