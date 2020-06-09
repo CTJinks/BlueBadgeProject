@@ -54,10 +54,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChallengeRequestModels\ChallengeRequestCreate.cs" />
-    <Compile Include="ChallengeRequestModels\ChallengeRequestDetail.cs" />
-    <Compile Include="ChallengeRequestModels\ChallengeRequestEdit.cs" />
-    <Compile Include="ChallengeRequestModels\ChallengeRequestListItem.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="IndividualPokemonModels\IndividualPokemonCreate.cs" />
     <Compile Include="IndividualPokemonModels\IndividualPokemonDetail.cs" />

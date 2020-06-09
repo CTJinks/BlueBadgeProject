@@ -13,7 +13,8 @@ namespace PokeTrack.Models
         public int PokemonID { get; set; }
         public string PokemonName { get; set; }
         public string PokemonType { get; set; }
-        public List<Move> MoveList { get; set; }
+      
+        // public List<Move> MoveList { get; set; }
         public string DietType { get; set; }
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }

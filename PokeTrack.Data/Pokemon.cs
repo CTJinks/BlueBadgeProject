@@ -17,6 +17,7 @@ namespace PokeTrack.Data
         public string PokemonType { get; set; }
         [Required]
         public string DietType { get; set; }
+
         public ICollection<IndividualPokemon> IndividualPokemonOfThisType { get; set; } = new List<IndividualPokemon>();
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }

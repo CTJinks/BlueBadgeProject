@@ -1,6 +1,5 @@
 ﻿using PokeTrack.Data;
-using PokeTrack.Models;
-using PokeTrack.Models.UserModels;
+using PokeTrack.Models.TeamModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,37 +8,48 @@ using System.Threading.Tasks;
 
 namespace PokeTrack.Services
 {
-    public class UserService
+    public class TeamService
     {
-        public bool CreateUser(UserCreate model)
+        public bool CreateTeam(TeamCreate model)
         {
             var entity =
-                new User()
-                {
-                    UserName = model.UserName,
-                    CreatedUtc = DateTimeOffset.Now
-                };
+                 new Team()
+                 {
+                     TeamID = model.TeamID,
+                     TeamName = model.TeamName,
+                     UserName = model.UserName,
+                     PokemonTeam = model.PokemonTeam
+
+                 };
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.TrainerDb.Add(entity);
+                ctx.TeamDb.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
+
+
+
+
+
         }
-        public IEnumerable<UserListItem> GetUsers()
+        public IEnumerable<TeamListItem> GetTeamByID()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                        .TrainerDb
-                        .Where(e => e.UserID == e.UserID)
+                        .TeamDb
+                        .Where(e => e.TeamID == e.TeamID)
                         .Select(
                             e =>
-                                new UserListItem
+                                new TeamListItem
                                 {
+                                    TeamID = e.TeamID,
+                                    TeamName = e.TeamName,
                                     UserName = e.UserName,
-                                    CreatedUtc = e.CreatedUtc
+                                    PokemonTeam = e.PokemonTeam
+
                                 }
                         );
 
@@ -47,52 +57,56 @@ namespace PokeTrack.Services
             }
         }
 
-        public IEnumerable<UserListItem> GetUsersByUserName()
+        public IEnumerable<TeamListItem> GetTeamByUser()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                        .TrainerDb
+                        .TeamDb
                         .Where(e => e.UserName == e.UserName)
                         .Select(
                             e =>
-                                new UserListItem
+                                new TeamListItem
                                 {
-                                    UserID = e.UserID,
+                                    TeamID = e.TeamID,
+                                    TeamName = e.TeamName,
                                     UserName = e.UserName,
-                                    CreatedUtc = e.CreatedUtc
+                                    PokemonTeam = e.PokemonTeam
+
                                 }
                         );
 
                 return query.ToArray();
             }
         }
-        public bool UpdateUser(UserEdit model)
+
+        public bool UpdateTeam(TeamEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                    .TrainerDb
-                    .Single(e => e.UserID == model.UserID);
-                entity.UserName = model.UserName;
-                entity.ModifiedUtc = DateTimeOffset.Now;
+                    .TeamDb
+                    .Single(e => e.TeamID == model.TeamID);
+                entity.TeamID = model.TeamID;
+                entity.TeamName = model.TeamName;
+                entity.PokemonTeam = model.PokemonTeam;
+
 
                 return ctx.SaveChanges() == 1;
             }
         }
-
-        public bool DeleteUser(int userID)
+        public bool DeleteTeam(int teamID)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                    .TrainerDb
-                    .Single(e => e.UserID == userID);
+                    .TeamDb
+                    .Single(e => e.TeamID == teamID);
 
-                ctx.TrainerDb.Remove(entity);
+                ctx.TeamDb.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
             }

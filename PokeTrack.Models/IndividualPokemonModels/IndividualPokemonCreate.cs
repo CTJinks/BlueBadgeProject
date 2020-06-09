@@ -8,15 +8,29 @@ using System.Threading.Tasks;
 
 namespace PokeTrack.Models.IndividualPokemonModels
 {
-    public class IndividualPokemonCreate
+    public class IndividualPokemonCreate 
     {
-        [Required]
+        
+        public int IndividualPokemonID { get; set; }
+        
+        public string IndividualPokemonName { get; set; }
+
+        
+        public int PokemonID { get; set; }
+       
         public string PokemonName { get; set; }
-        [Required]
+        
         public string PokemonType { get; set; }
-        [Required]
+       
         public string DietType { get; set; }
-        [Required]
-        public List<Move> Moves { get; set; }
+
+        public virtual List<Move> Moves { get; set; }
+
+        // public List<IndividualPokemon> IndividualPokemonOfThisType { get; set; } 
+       
+        public DateTimeOffset CreatedUtc { get; set; }
+
+        // public DateTimeOffset? ModifiedUtc { get; set; }
+
     }
 }

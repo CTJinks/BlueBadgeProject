@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace PokeTrack.Models.IndividualPokemonModels
 {
-    class IndividualPokemonEdit
+    public class IndividualPokemonEdit
     {
         public int IndividualPokemonID { get; set; }
-        public ICollection<Move> Moves { get; set; }
+        public string IndividualPokemonName { get; set; }
+        public List<Move> Moves { get; set; }
     }
 }

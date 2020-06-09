@@ -9,7 +9,7 @@ namespace PokeTrack.Models
 {
     public class MoveListItem
     {
-        public string MoveID { get; set; }
+        public int MoveID { get; set; }
         public string MoveName { get; set; }
         public int Damage { get; set; }
 
