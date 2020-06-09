@@ -16,7 +16,7 @@ namespace PokeTrack.Services
             var entity =
                  new Move()
                  {
-
+                     MoveID = model.MoveID,
                      MoveName = model.MoveName,
                      Damage = model.Damage,
                      CreatedUtc = DateTimeOffset.Now
@@ -45,13 +45,43 @@ namespace PokeTrack.Services
                             e =>
                                 new MoveListItem
                                 {
-
+                                    MoveID = e.MoveID,
                                     MoveName = e.MoveName,
-                                    CreatedUtc = e.CreatedUtc
+                                    CreatedUtc = e.CreatedUtc,
+                                    Damage = e.Damage
                                 }
                         );
 
                 return query.ToArray();
+            }
+        }
+        public bool UpdateMoves(MoveEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .MoveDb
+                    .Single(e => e.MoveID == model.MoveID);
+                entity.MoveID = model.MoveID;
+                entity.MoveName = entity.MoveName;
+                entity.Damage = entity.Damage;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool DeleteMove(int moveID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .MoveDb
+                    .Single(e => e.MoveID == moveID);
+
+                ctx.MoveDb.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
             }
         }
     }

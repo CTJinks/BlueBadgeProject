@@ -15,10 +15,10 @@ namespace PokeTrack.Data
         public string TeamName { get; set; }
         [ForeignKey("User")]
         public int UserID { get; set; }
-        public virtual User User { get; set; }
+        public virtual string UserName { get; set; }
         [ForeignKey("IndividualPokemon")]
         public int IndividualPokemonID { get; set; }
-        public virtual IndividualPokemon IndividualPokemon { get; set; }
+        public virtual List<IndividualPokemon> PokemonTeam { get; set; }
 
         // and maybe a second property to apply additional filters with
     }

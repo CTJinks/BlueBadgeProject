@@ -11,13 +11,19 @@ namespace PokeTrack.Models.PokemonModels
     public class PokemonCreate
     {
         [Required]
+        public int PokemonID { get; set; }
+
+        [Required]
         public string PokemonName { get; set; }
         [Required]
         public string PokemonType { get; set; }
+
         [Required]
-        [Range(1, 4)]//this may not be the right way to do this
-        public List<Move> MoveList { get; set; }
+        public List<IndividualPokemon> IndividualPokemonOfThisType { get; set; }
+       
         [Required]
         public string DietType { get; set; }
+        public DateTimeOffset CreatedUtc { get; set; }
+
     }
 }

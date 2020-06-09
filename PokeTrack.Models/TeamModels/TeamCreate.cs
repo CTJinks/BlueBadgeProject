@@ -15,6 +15,8 @@ namespace PokeTrack.Models.TeamModels
         [Required]
         public string TeamName { get; set; }
         [Required]
+        public string UserName { get; set; }
+        [Required]
         public List<IndividualPokemon> PokemonTeam { get; set; }
          
     }

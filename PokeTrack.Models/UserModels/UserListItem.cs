@@ -14,7 +14,9 @@ namespace PokeTrack.Models
         [Display(Name = "Trainer")]
         public string UserName { get; set; }
         public List<Pokemon> PokemonList { get; set; }
-        public ChallengeRequest ChallengeRequest { get; set; }
+       
+        // public ChallengeRequest ChallengeRequest { get; set; } <--maybe stretch goal
+       
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }
     }
