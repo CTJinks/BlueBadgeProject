@@ -29,6 +29,7 @@ namespace PokeTrack.Models.IndividualPokemonModels
         // public List<IndividualPokemon> IndividualPokemonOfThisType { get; set; } 
        
         public DateTimeOffset CreatedUtc { get; set; }
+        public string UserName { get; set; }
 
         // public DateTimeOffset? ModifiedUtc { get; set; }
 

@@ -17,11 +17,18 @@ namespace PokeTrack.Controllers
             var userService = new UserService();
             return userService;
         }
-        public IHttpActionResult Get()
+        public IHttpActionResult GetUsers()
         {
             UserService userService = CreateUserService();
             var users = userService.GetUsers();
             return Ok(users);
+        }
+
+        public IHttpActionResult Get()
+        {
+            UserService userService = CreateUserService();
+            var user = userService.GetUserByUserName();
+            return Ok(user);
         }
         public IHttpActionResult Post(UserCreate user)
         {
@@ -35,5 +42,27 @@ namespace PokeTrack.Controllers
 
             return Ok();
         }
+        public IHttpActionResult Put(UserEdit user)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateUserService();
+
+            if (!service.UpdateUser(user))
+                return InternalServerError();
+
+            return Ok();
+        }
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateUserService();
+
+            if (!service.DeleteUser(id))
+                return InternalServerError();
+
+            return Ok();
+        }
+
     }
 }

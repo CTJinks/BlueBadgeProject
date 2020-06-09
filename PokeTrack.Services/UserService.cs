@@ -47,7 +47,7 @@ namespace PokeTrack.Services
             }
         }
 
-        public IEnumerable<UserListItem> GetUsersByUserName()
+        public IEnumerable<UserListItem> GetUserByUserName()
         {
             using (var ctx = new ApplicationDbContext())
             {

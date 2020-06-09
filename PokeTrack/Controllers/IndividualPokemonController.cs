@@ -20,9 +20,22 @@ namespace PokeTrack.Controllers
         }
         public IHttpActionResult Get()
         {
-            IndividualPokemonService moveService = CreateIndividualPokemonService();
-            var moves = moveService.GetIndividualPokemon();
-            return Ok(moves);
+            IndividualPokemonService individualPokemonService = CreateIndividualPokemonService();
+            var individualPokemon = individualPokemonService.GetAllIndividualPokemon();
+            return Ok(individualPokemon);
+        }
+        public IHttpActionResult GetByID()
+        {
+            IndividualPokemonService individualPokemonService = CreateIndividualPokemonService();
+            var individualPokemon = individualPokemonService.GetIndividualPokemonByID();
+            return Ok(individualPokemon);
+        }
+
+        public IHttpActionResult GetByPokemonType()
+        {
+            IndividualPokemonService individualPokemonService = CreateIndividualPokemonService();
+            var individualPokemon = individualPokemonService.GetIndividualPokemonByPokemonType();
+            return Ok(individualPokemon);
         }
         public IHttpActionResult Post(IndividualPokemonCreate individualPokemon)
         {
@@ -32,6 +45,27 @@ namespace PokeTrack.Controllers
             var service = CreateIndividualPokemonService();
 
             if (!service.CreateIndividualPokemon(individualPokemon))
+                return InternalServerError();
+
+            return Ok();
+        }
+        public IHttpActionResult Put(IndividualPokemonEdit individualPokemon)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateIndividualPokemonService();
+
+            if (!service.UpdateIndividualPokemon(individualPokemon))
+                return InternalServerError();
+
+            return Ok();
+        }
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateIndividualPokemonService();
+
+            if (!service.DeleteIndividualPokemon(id))
                 return InternalServerError();
 
             return Ok();

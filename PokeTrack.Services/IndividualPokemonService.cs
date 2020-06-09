@@ -22,7 +22,7 @@ namespace PokeTrack.Services
                     DietType = model.DietType,
                     Moves = model.Moves,
                     CreatedUtc = DateTimeOffset.Now,
-
+                    UserName = model.UserName
 
                  };
 
@@ -36,6 +36,31 @@ namespace PokeTrack.Services
 
 
 
+        }
+        public IEnumerable<IndividualPokemonListItem> GetAllIndividualPokemon()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .IndividualPokemonDb
+                        .Where(e => e.UserID == e.UserID)
+                        .Select(
+                            e =>
+                                new IndividualPokemonListItem
+                                {
+                                    IndividualPokemonID = e.IndividualPokemonID,
+                                    IndividualPokemonName = e.IndividualPokemonName,
+                                    PokemonName = e.PokemonName,
+                                    PokemonType = e.PokemonType,
+                                    DietType = e.DietType,
+                                    Moves = e.Moves,
+                                    UserName = e.UserName
+                                }
+                        );
+
+                return query.ToArray();
+            }
         }
         public IEnumerable<IndividualPokemonListItem> GetIndividualPokemonByID()
         {
@@ -54,7 +79,8 @@ namespace PokeTrack.Services
                                     PokemonName = e.PokemonName,
                                     PokemonType = e.PokemonType,
                                     DietType = e.DietType,
-                                    Moves = e.Moves
+                                    Moves = e.Moves,
+                                    UserName = e.UserName
                                 }
                         );
 
@@ -78,6 +104,7 @@ namespace PokeTrack.Services
                                     PokemonName = e.PokemonName,
                                     PokemonType = e.PokemonType,
                                     DietType = e.DietType,
+                                    UserName =e.UserName,
                                     Moves = e.Moves
                                 }
                         );

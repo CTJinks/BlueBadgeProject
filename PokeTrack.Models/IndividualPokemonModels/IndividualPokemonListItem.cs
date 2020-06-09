@@ -16,5 +16,6 @@ namespace PokeTrack.Models.IndividualPokemonModels
         public string PokemonType { get; set; }
         public string DietType { get; set; }
         public List<Move> Moves { get; set; }
+        public string UserName { get; set; }
     }
 }

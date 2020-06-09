@@ -55,7 +55,7 @@ namespace PokeTrack.Services
                 return query.ToArray();
             }
         }
-        public bool UpdateMoves(MoveEdit model)
+        public bool UpdateMove(MoveEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
