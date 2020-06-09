@@ -36,5 +36,26 @@ namespace PokeTrack.Controllers
 
             return Ok();
         }
+        public IHttpActionResult Put(MoveEdit move)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateMoveService();
+
+            if (!service.UpdateMove(move))
+                return InternalServerError();
+
+            return Ok();
+        }
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateMoveService();
+
+            if (!service.DeleteMove(id))
+                return InternalServerError();
+
+            return Ok();
+        }
     }
 }

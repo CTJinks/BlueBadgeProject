@@ -20,6 +20,10 @@ namespace PokeTrack.Data
         public int MoveID { get; set; }
         public virtual List<Move> Moves { get; set; }
 
+        [ForeignKey("UserName")]
+        public int UserID { get; set; }
+        public virtual string UserName { get; set; }
+
 
 
 

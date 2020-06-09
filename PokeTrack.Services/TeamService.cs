@@ -10,6 +10,7 @@ namespace PokeTrack.Services
 {
     public class TeamService
     {
+        
         public bool CreateTeam(TeamCreate model)
         {
             var entity =
@@ -33,6 +34,29 @@ namespace PokeTrack.Services
 
 
         }
+        public IEnumerable<TeamListItem> GetTeams()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .TeamDb
+                        .Where(e => e.UserID == e.UserID)
+                        .Select(
+                            e =>
+                                new TeamListItem
+                                {
+                                    TeamID = e.TeamID,
+                                    TeamName = e.TeamName,
+                                    UserName = e.UserName,
+                                    PokemonTeam = e.PokemonTeam
+                                }
+                        );
+
+                return query.ToArray();
+            }
+        }
+
         public IEnumerable<TeamListItem> GetTeamByID()
         {
             using (var ctx = new ApplicationDbContext())

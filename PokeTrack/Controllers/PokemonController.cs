@@ -23,6 +23,12 @@ namespace PokeTrack.Controllers
             var pokemon = pokemonService.GetPokemons();
             return Ok(pokemon);
         }
+        public IHttpActionResult GetByType()
+        {
+            PokemonService pokemonService = CreatePokemonService();
+            var pokemon = pokemonService.GetPokemonByType();
+            return Ok(pokemon);
+        }
         public IHttpActionResult Post(PokemonCreate pokemon)
         {
             if (!ModelState.IsValid)
@@ -31,6 +37,27 @@ namespace PokeTrack.Controllers
             var service = CreatePokemonService();
 
             if (!service.CreatePokemon(pokemon))
+                return InternalServerError();
+
+            return Ok();
+        }
+        public IHttpActionResult Put(PokemonEdit pokemon)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreatePokemonService();
+
+            if (!service.UpdatePokemon(pokemon))
+                return InternalServerError();
+
+            return Ok();
+        }
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreatePokemonService();
+
+            if (!service.DeletePokemon(id))
                 return InternalServerError();
 
             return Ok();
