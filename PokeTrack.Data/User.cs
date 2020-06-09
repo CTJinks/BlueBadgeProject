@@ -13,12 +13,13 @@ namespace PokeTrack.Data
         public int UserID { get; set; }
         [Required]
         public string UserName { get; set; }
-        /*[Required]
-        [Range(1, 6)]//this may not be the right way to do this
-        public List<Pokemon> PokemonList { get; set; }*/
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
 
         public DateTimeOffset? ModifiedUtc { get; set; }
+        public ICollection<Team> Teams { get; set; } = new List<Team>();
+            
+
+        //need a property that holds a collection of our User's Teams
     }
 }

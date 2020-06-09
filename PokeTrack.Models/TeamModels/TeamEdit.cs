@@ -10,6 +10,7 @@ namespace PokeTrack.Models.TeamModels
     public class TeamEdit
     {
         public int TeamID { get; set; }
+        public string TeamName { get; set; }
         public List<IndividualPokemon> PokemonTeam { get; set; }
     }
 }

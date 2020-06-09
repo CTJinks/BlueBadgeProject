@@ -1,10 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+A User is a Pokemon Trainer.
+
+A Team is User merged with a Collection of Pokemon.
+
+Pokemon is the existence of a "species" of Pokemon.
+
+A Move is just that, and it has a Name and Damage done.
+
+Individual Pokemon is the instance of a unique Pokemon with its own collection of Moves and other properties.
+
+A Challenge Request is a request from one Team for a challenge for a given date. 
+
+We may include the actual Challenge as a stretch goal.
+
+ChallengeRequest
 
 namespace PokeTrack.Data
 {

@@ -17,9 +17,6 @@ namespace PokeTrack.Services
                 new User()
                 {
                     UserName = model.UserName,
-                    PokemonList = model.PokemonList,
-                    ChallengeRequest = model.ChallengeRequest,
-                    ChallengesAccepted = model.ChallengesAccepted,
                     CreatedUtc = DateTimeOffset.Now
                 };
 
@@ -42,8 +39,6 @@ namespace PokeTrack.Services
                                 new UserListItem
                                 {
                                     UserName = e.UserName,
-                                    PokemonList = e.PokemonList,
-                                    ChallengeRequest = e.ChallengeRequest,
                                     CreatedUtc = e.CreatedUtc
                                 }
                         );

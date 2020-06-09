@@ -15,6 +15,7 @@ namespace PokeTrack.Services
             var entity =
                  new IndividualPokemon()
                  {
+                     model.,
 
                  };
 

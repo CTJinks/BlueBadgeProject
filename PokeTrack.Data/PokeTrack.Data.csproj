@@ -84,7 +84,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChallengeRequest.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="IndividualPokemon.cs" />
     <Compile Include="Move.cs" />

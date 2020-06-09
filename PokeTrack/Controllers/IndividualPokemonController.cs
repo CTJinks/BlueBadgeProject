@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PokeTrack.Models.IndividualPokemonModels;
+using PokeTrack.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,26 +12,26 @@ namespace PokeTrack.Controllers
     [Authorize]
     public class IndividualPokemonController : ApiController
     {
-        private MoveService CreateMoveService()
+        private IndividualPokemonService CreateIndividualPokemonService()
         {
 
-            var moveService = new MoveService();
+            var moveService = new IndividualPokemonService();
             return moveService;
         }
         public IHttpActionResult Get()
         {
-            MoveService moveService = CreateMoveService();
-            var moves = moveService.GetMoves();
+            IndividualPokemonService moveService = CreateIndividualPokemonService();
+            var moves = moveService.GetIndividualPokemon();
             return Ok(moves);
         }
-        public IHttpActionResult Post(MoveCreate move)
+        public IHttpActionResult Post(IndividualPokemonCreate individualPokemon)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreateMoveService();
+            var service = CreateIndividualPokemonService();
 
-            if (!service.CreateMove(move))
+            if (!service.CreateIndividualPokemon(individualPokemon))
                 return InternalServerError();
 
             return Ok();
