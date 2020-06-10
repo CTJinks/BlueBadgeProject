@@ -11,6 +11,18 @@ namespace PokeTrack.Services
 {
     public class UserService
     {
+        public User GetUserAccountByID(string applicationUserID, int userAccountID)
+        {
+            ApplicationUser appUser = new ApplicationUser();
+
+            using (var ctx = new ApplicationDbContext())
+            {
+                appUser = ctx.Users.Single((e => e.Id == applicationUserID));          
+            }
+           User user = appUser.UserAccounts.Single(e => e.UserID == userAccountID);
+            return user;
+
+        }
         public bool CreateUser(UserCreate model)
         {
             var entity =

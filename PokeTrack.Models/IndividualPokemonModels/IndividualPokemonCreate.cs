@@ -11,27 +11,18 @@ namespace PokeTrack.Models.IndividualPokemonModels
     public class IndividualPokemonCreate 
     {
         
-        public int IndividualPokemonID { get; set; }
-        
+       // public int IndividualPokemonID { get; set; }
+        [Required]
         public string IndividualPokemonName { get; set; }
-
-        
+        [Required]
+        public int MoveID { get; set; }
+        [Required]
         public int PokemonID { get; set; }
-       
-        public string PokemonName { get; set; }
-        
-        public string PokemonType { get; set; }
-       
-        public string DietType { get; set; }
-
-        public virtual List<Move> Moves { get; set; }
+        [Required]
+        public int UserID { get; set; }
+        public int? TeamID { get; set; }
+       // public string MoveName { get; set; }
 
         // public List<IndividualPokemon> IndividualPokemonOfThisType { get; set; } 
-       
-        public DateTimeOffset CreatedUtc { get; set; }
-        public string UserName { get; set; }
-
-        // public DateTimeOffset? ModifiedUtc { get; set; }
-
     }
 }

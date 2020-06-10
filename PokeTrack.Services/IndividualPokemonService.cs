@@ -3,6 +3,7 @@ using PokeTrack.Models.IndividualPokemonModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Instrumentation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,20 +11,27 @@ namespace PokeTrack.Services
 {
     public class IndividualPokemonService
     {
+        private readonly int _userID;
+        public IndividualPokemonService()
+        {
+
+        }
+        public IndividualPokemonService(int userID)
+        {
+            _userID = userID;
+
+        }
         public bool CreateIndividualPokemon(IndividualPokemonCreate model)
         {
             var entity =
-                 new IndividualPokemon()
+                 new IndividualPokemon
                  {
-                    IndividualPokemonID = model.IndividualPokemonID,
-                    PokemonID = model.PokemonID,
-                    PokemonName = model.PokemonName,
-                    PokemonType = model.PokemonType,
-                    DietType = model.DietType,
-                    Moves = model.Moves,
-                    CreatedUtc = DateTimeOffset.Now,
-                    UserName = model.UserName
-
+                   // IndividualPokemonID = model.IndividualPokemonID,
+                  MoveID = model.MoveID,
+                  IndividualPokemonName = model.IndividualPokemonName,
+                  PokemonID = model.PokemonID,
+                  UserID = _userID,
+                  TeamID = model.TeamID
                  };
 
             using (var ctx = new ApplicationDbContext())
@@ -31,11 +39,6 @@ namespace PokeTrack.Services
                 ctx.IndividualPokemonDb.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
-
-
-
-
-
         }
         public IEnumerable<IndividualPokemonListItem> GetAllIndividualPokemon()
         {
@@ -44,18 +47,18 @@ namespace PokeTrack.Services
                 var query =
                     ctx
                         .IndividualPokemonDb
-                        .Where(e => e.UserID == e.UserID)
+                        .Where(e => e.UserID == _userID)
                         .Select(
                             e =>
                                 new IndividualPokemonListItem
                                 {
                                     IndividualPokemonID = e.IndividualPokemonID,
                                     IndividualPokemonName = e.IndividualPokemonName,
-                                    PokemonName = e.PokemonName,
-                                    PokemonType = e.PokemonType,
-                                    DietType = e.DietType,
-                                    Moves = e.Moves,
-                                    UserName = e.UserName
+                                    PokemonName = e.Pokemon.PokemonName,
+                                    PokemonType = e.Pokemon.PokemonType,
+                                    DietType = e.Pokemon.DietType,
+                                    //Moves = e.Pokemon.,
+                                   // UserName = e.UserName
                                 }
                         );
 
@@ -76,42 +79,42 @@ namespace PokeTrack.Services
                                 {
                                     IndividualPokemonID = e.IndividualPokemonID,
                                     IndividualPokemonName = e.IndividualPokemonName,
-                                    PokemonName = e.PokemonName,
-                                    PokemonType = e.PokemonType,
-                                    DietType = e.DietType,
-                                    Moves = e.Moves,
-                                    UserName = e.UserName
+                                    PokemonName = e.Pokemon.PokemonName,
+                                    PokemonType = e.Pokemon.PokemonType,
+                                    DietType = e.Pokemon.DietType,
+                                   // Moves = e.Moves,
+                                   // UserName = e.UserName
                                 }
                         );
 
                 return query.ToArray();
             }
         }
-        public IEnumerable<IndividualPokemonListItem> GetIndividualPokemonByPokemonType()
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var query =
-                    ctx
-                        .IndividualPokemonDb
-                        .Where(e => e.PokemonType == e.PokemonType)
-                        .Select(
-                            e =>
-                                new IndividualPokemonListItem
-                                {
-                                    IndividualPokemonID = e.IndividualPokemonID,
-                                    IndividualPokemonName = e.IndividualPokemonName,
-                                    PokemonName = e.PokemonName,
-                                    PokemonType = e.PokemonType,
-                                    DietType = e.DietType,
-                                    UserName =e.UserName,
-                                    Moves = e.Moves
-                                }
-                        );
+        //public IEnumerable<IndividualPokemonListItem> GetIndividualPokemonByPokemonType()
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var query =
+        //            ctx
+        //                .IndividualPokemonDb
+        //                .Where(e => e.Pokemon.PokemonType == e.Pokemon.PokemonType)
+        //                .Select(
+        //                    e =>
+        //                        new IndividualPokemonListItem
+        //                        {
+        //                            IndividualPokemonID = e.IndividualPokemonID,
+        //                            IndividualPokemonName = e.IndividualPokemonName,
+        //                            PokemonName = e.PokemonName,
+        //                            PokemonType = e.PokemonType,
+        //                            DietType = e.DietType,
+        //                            UserName =e.UserName,
+        //                            Moves = e.Moves
+        //                        }
+        //                );
 
-                return query.ToArray();
-            }
-        }
+        //        return query.ToArray();
+        //    }
+        //}
         public bool UpdateIndividualPokemon(IndividualPokemonEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -120,7 +123,7 @@ namespace PokeTrack.Services
                     ctx
                     .IndividualPokemonDb
                     .Single(e => e.IndividualPokemonID == model.IndividualPokemonID);
-                entity.Moves = model.Moves;
+                //entity.Moves = model.Moves;
                 entity.IndividualPokemonName = entity.IndividualPokemonName;
 
                 return ctx.SaveChanges() == 1;

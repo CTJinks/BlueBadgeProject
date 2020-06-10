@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
@@ -20,6 +22,7 @@ namespace PokeTrack.Data
             // Add custom user claims here
             return userIdentity;
         }
+        public virtual ICollection<User> UserAccounts { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

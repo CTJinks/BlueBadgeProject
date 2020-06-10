@@ -1,4 +1,6 @@
-﻿using PokeTrack.Models.IndividualPokemonModels;
+﻿using Microsoft.AspNet.Identity;
+using PokeTrack.Data;
+using PokeTrack.Models.IndividualPokemonModels;
 using PokeTrack.Services;
 using System;
 using System.Collections.Generic;
@@ -12,8 +14,18 @@ namespace PokeTrack.Controllers
     [Authorize]
     public class IndividualPokemonController : ApiController
     {
+        private IndividualPokemonService CreateIndividualPokemonServiceWithUserAccountID(int id)
+        { 
+            var accountWeWant = id; //for the sake of clarity
+            var userService = new UserService();
+            string applicationUserID = User.Identity.GetUserId();
+
+            User user = userService.GetUserAccountByID(applicationUserID, accountWeWant);
+            var pokeService = new IndividualPokemonService(user.UserID);
+            return pokeService;
+        }
         private IndividualPokemonService CreateIndividualPokemonService()
-        {
+        {    
 
             var moveService = new IndividualPokemonService();
             return moveService;
@@ -31,18 +43,18 @@ namespace PokeTrack.Controllers
             return Ok(individualPokemon);
         }
 
-        public IHttpActionResult GetByPokemonType()
-        {
-            IndividualPokemonService individualPokemonService = CreateIndividualPokemonService();
-            var individualPokemon = individualPokemonService.GetIndividualPokemonByPokemonType();
-            return Ok(individualPokemon);
-        }
+        //public IHttpActionResult GetByPokemonType()
+        //{
+        //    IndividualPokemonService individualPokemonService = CreateIndividualPokemonService();
+        //    var individualPokemon = individualPokemonService.GetIndividualPokemonByPokemonType();
+        //    return Ok(individualPokemon);
+        //}
         public IHttpActionResult Post(IndividualPokemonCreate individualPokemon)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreateIndividualPokemonService();
+            var service = CreateIndividualPokemonServiceWithUserAccountID(individualPokemon.UserID);
 
             if (!service.CreateIndividualPokemon(individualPokemon))
                 return InternalServerError();

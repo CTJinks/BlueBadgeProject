@@ -18,8 +18,8 @@ namespace PokeTrack.Services
                  {
                      TeamID = model.TeamID,
                      TeamName = model.TeamName,
-                     UserName = model.UserName,
-                     PokemonTeam = model.PokemonTeam
+                     //UserName = model.UserName,
+                     //PokemonTeam = model.PokemonTeam
 
                  };
 
@@ -41,15 +41,15 @@ namespace PokeTrack.Services
                 var query =
                     ctx
                         .TeamDb
-                        .Where(e => e.UserID == e.UserID)
+                        .Where(e => e.TeamID == e.TeamID)
                         .Select(
                             e =>
                                 new TeamListItem
                                 {
                                     TeamID = e.TeamID,
                                     TeamName = e.TeamName,
-                                    UserName = e.UserName,
-                                    PokemonTeam = e.PokemonTeam
+                                    //UserName = e.IndividualPokemon.UserName,
+                                   // PokemonTeam = e.PokemonTeam
                                 }
                         );
 
@@ -71,8 +71,8 @@ namespace PokeTrack.Services
                                 {
                                     TeamID = e.TeamID,
                                     TeamName = e.TeamName,
-                                    UserName = e.UserName,
-                                    PokemonTeam = e.PokemonTeam
+                                    //UserName = e.UserName,
+                                    //PokemonTeam = e.PokemonTeam
 
                                 }
                         );
@@ -81,7 +81,7 @@ namespace PokeTrack.Services
             }
         }
 
-        public IEnumerable<TeamListItem> GetTeamByUser()
+        /*public IEnumerable<TeamListItem> GetTeamByUser()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -103,7 +103,7 @@ namespace PokeTrack.Services
 
                 return query.ToArray();
             }
-        }
+        }*/
 
         public bool UpdateTeam(TeamEdit model)
         {
@@ -115,7 +115,7 @@ namespace PokeTrack.Services
                     .Single(e => e.TeamID == model.TeamID);
                 entity.TeamID = model.TeamID;
                 entity.TeamName = model.TeamName;
-                entity.PokemonTeam = model.PokemonTeam;
+                //entity.PokemonTeam = model.PokemonTeam;
 
 
                 return ctx.SaveChanges() == 1;

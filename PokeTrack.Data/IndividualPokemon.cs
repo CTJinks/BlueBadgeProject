@@ -8,22 +8,28 @@ using System.Threading.Tasks;
 
 namespace PokeTrack.Data
 {
-    public class IndividualPokemon : Pokemon
+    public class IndividualPokemon // : Pokemon
     {
         [Key]
         public int IndividualPokemonID { get; set; }
-
-        
         [Required]
         public string IndividualPokemonName { get; set; }
-        [ForeignKey("Move")]
+       // [Required]
+        [ForeignKey("Moves")]
         public int MoveID { get; set; }
-        public virtual List<Move> Moves { get; set; }
+        public virtual Move Moves { get; set; }
 
+       // [Required]
         [ForeignKey("UserName")]
         public int UserID { get; set; }
-        public virtual string UserName { get; set; }
+        public virtual User UserName { get; set; }
 
+        [ForeignKey("Pokemon")]
+        public int PokemonID { get; set; }
+        public virtual Pokemon Pokemon { get; set; }
+        [ForeignKey("Team")]
+        public int? TeamID { get; set; }
+        public virtual Team Team { get; set; }
 
 
 
