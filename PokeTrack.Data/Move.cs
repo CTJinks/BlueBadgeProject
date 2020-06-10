@@ -21,5 +21,7 @@ namespace PokeTrack.Data
         /*public ICollection<IndividualPokemon> PokemonWithThisMove { get; set; } = new List<IndividualPokemon>();*/
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
+        //public ICollection<IndividualPokemonMoves> Moves { get; set; } = new List<IndividualPokemonMoves>();
+
     }
 }

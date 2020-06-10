@@ -1,37 +1,38 @@
 ﻿using PokeTrack.Data;
-using PokeTrack.Models.IndividualPokemonModels;
+using PokeTrack.Models.IndividualPokemonMovesModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Management.Instrumentation;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PokeTrack.Services
 {
-    public class IndividualPokemonService
+    public class IndividualPokemonMovesService
     {
         private readonly int _userID;
-        public IndividualPokemonService()
+        public IndividualPokemonMovesService()
         {
 
         }
-        public IndividualPokemonService(int userID)
+        public IndividualPokemonMovesService(int userID)
         {
             _userID = userID;
 
         }
-        public bool CreateIndividualPokemon(IndividualPokemonCreate model)
+
+//Copy/Pasted from another services page, ignore errors for now
+
+
+        public bool CreateIndividualPokemonMoves(IndividualPokemonMovesCreate model)
         {
             var entity =
-                 new IndividualPokemon
+                 new IndividualPokemonMoves
                  {
-                   // IndividualPokemonID = model.IndividualPokemonID,
-                  IndividualPokemonMovesList = model.IndividualPokemonMovesList,
-                  IndividualPokemonName = model.IndividualPokemonName,
-                  PokemonID = model.PokemonID,
-                  UserID = _userID,
-                  TeamID = model.TeamID
+                     // IndividualPokemonID = model.IndividualPokemonID,
+                     IndividualPokemonMovesID = model.IndividualPokemonMovesID,
+                     IndividualPokemon = model.IndividualPokemonMovesList
+                     
                  };
 
             using (var ctx = new ApplicationDbContext())

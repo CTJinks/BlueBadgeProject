@@ -17,7 +17,10 @@ namespace PokeTrack.Models.IndividualPokemonModels
         public string PokemonName { get; set; }
         public string PokemonType { get; set; }
         public string DietType { get; set; }
-        public List<Move> Moves { get; set; }
-        public string UserName { get; set; }
+        public int UserID { get; set; }
+        public string TeamName { get; set; }
+        public ICollection<IndividualPokemonMoves> IndividualPokemonMovesList { get; set; } = new List<IndividualPokemonMoves>();
+        //public List<IndividualPokemonMoves> IndividualPokemonMovesList { get; set; }
+
     }
 }

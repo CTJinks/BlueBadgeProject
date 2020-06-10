@@ -14,12 +14,11 @@ namespace PokeTrack.Data
         public int IndividualPokemonID { get; set; }
         [Required]
         public string IndividualPokemonName { get; set; }
-       // [Required]
-        [ForeignKey("Moves")]
-        public int MoveID { get; set; }
-        public virtual Move Moves { get; set; }
+        // [Required]
+        public ICollection<IndividualPokemonMoves> IndividualPokemonMovesList { get; set; } = new List<IndividualPokemonMoves>();
 
-       // [Required]
+
+        // [Required]
         [ForeignKey("UserName")]
         public int UserID { get; set; }
         public virtual User UserName { get; set; }
@@ -27,6 +26,7 @@ namespace PokeTrack.Data
         [ForeignKey("Pokemon")]
         public int PokemonID { get; set; }
         public virtual Pokemon Pokemon { get; set; }
+
         [ForeignKey("Team")]
         public int? TeamID { get; set; }
         public virtual Team Team { get; set; }

@@ -86,6 +86,7 @@
   <ItemGroup>
     <Compile Include="IdentityModels.cs" />
     <Compile Include="IndividualPokemon.cs" />
+    <Compile Include="IndividualPokemonMoves.cs" />
     <Compile Include="Migrations\202006102011215_ReworkedALotOfStuff.cs" />
     <Compile Include="Migrations\202006102011215_ReworkedALotOfStuff.Designer.cs">
       <DependentUpon>202006102011215_ReworkedALotOfStuff.cs</DependentUpon>

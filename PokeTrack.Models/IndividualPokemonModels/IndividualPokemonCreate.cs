@@ -21,7 +21,9 @@ namespace PokeTrack.Models.IndividualPokemonModels
         [Required]
         public int UserID { get; set; }
         public int? TeamID { get; set; }
-       // public string MoveName { get; set; }
+        public ICollection<IndividualPokemonMoves> IndividualPokemonMovesList { get; set; } = new List<IndividualPokemonMoves>();
+
+        // public string MoveName { get; set; }
 
         // public List<IndividualPokemon> IndividualPokemonOfThisType { get; set; } 
     }
