@@ -91,6 +91,10 @@
     <Compile Include="Migrations\202006102011215_ReworkedALotOfStuff.Designer.cs">
       <DependentUpon>202006102011215_ReworkedALotOfStuff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006111941526_AddedJoiningTable.cs" />
+    <Compile Include="Migrations\202006111941526_AddedJoiningTable.Designer.cs">
+      <DependentUpon>202006111941526_AddedJoiningTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Move.cs" />
     <Compile Include="Pokemon.cs" />
@@ -105,6 +109,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202006102011215_ReworkedALotOfStuff.resx">
       <DependentUpon>202006102011215_ReworkedALotOfStuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006111941526_AddedJoiningTable.resx">
+      <DependentUpon>202006111941526_AddedJoiningTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

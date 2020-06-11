@@ -17,19 +17,19 @@ namespace PokeTrack.Controllers
             var userService = new UserService();
             return userService;
         }
-        public IHttpActionResult GetUsers()
+        public IHttpActionResult Get()
         {
             UserService userService = CreateUserService();
             var users = userService.GetUsers();
             return Ok(users);
         }
 
-        public IHttpActionResult Get()
-        {
-            UserService userService = CreateUserService();
-            var user = userService.GetUserByUserName();
-            return Ok(user);
-        }
+        //public IHttpActionResult Get()
+        //{
+        //    UserService userService = CreateUserService();
+        //    var user = userService.GetUserByUserName();
+        //    return Ok(user);
+        //}
         public IHttpActionResult Post(UserCreate user)
         {
             if (!ModelState.IsValid)

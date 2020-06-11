@@ -13,7 +13,7 @@ namespace PokeTrack.Data
         [Key]
         public int IndividualPokemonMovesID { get; set; }
 
-        [ForeignKey("Moves")]
+        [ForeignKey("Move")]
         public int MoveID { get; set; }
         public virtual Move Move { get; set; }
 

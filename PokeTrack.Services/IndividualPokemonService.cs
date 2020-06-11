@@ -27,11 +27,12 @@ namespace PokeTrack.Services
                  new IndividualPokemon
                  {
                    // IndividualPokemonID = model.IndividualPokemonID,
-                  MoveID = model.MoveID,
+                  
                   IndividualPokemonName = model.IndividualPokemonName,
                   PokemonID = model.PokemonID,
                   UserID = _userID,
                   TeamID = model.TeamID
+                  
                  };
 
             using (var ctx = new ApplicationDbContext())

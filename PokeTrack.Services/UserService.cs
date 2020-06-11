@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 
 namespace PokeTrack.Services
 {
+    
     public class UserService
     {
+        
         public User GetUserAccountByID(string applicationUserID, int userAccountID)
         {
             ApplicationUser appUser = new ApplicationUser();
@@ -51,7 +53,7 @@ namespace PokeTrack.Services
                                 new UserListItem
                                 {
                                     UserName = e.UserName,
-                                    CreatedUtc = e.CreatedUtc
+                                    //CreatedUtc = e.CreatedUtc
                                 }
                         );
 
@@ -87,9 +89,9 @@ namespace PokeTrack.Services
                 var entity =
                     ctx
                     .TrainerDb
-                    .Single(e => e.UserID == model.UserID);
+                    .Single(e => e.UserID == e.UserID);
                 entity.UserName = model.UserName;
-                entity.ModifiedUtc = DateTimeOffset.Now;
+                //entity.ModifiedUtc = DateTimeOffset.Now;
 
                 return ctx.SaveChanges() == 1;
             }

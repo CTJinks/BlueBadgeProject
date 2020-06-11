@@ -13,7 +13,7 @@ namespace PokeTrack.Models.IndividualPokemonModels
         public string PokemonName { get; set; }
         public string PokemonType { get; set; }
         public string DietType { get; set; }
-        public ICollection<Move> Moves { get; set; }
+        public ICollection<IndividualPokemonMoves> MovesJoiningTable { get; set; }
         public string UserName { get; set; }
     }
 }
