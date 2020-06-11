@@ -37,7 +37,7 @@ namespace PokeTrack.Services
 
 
         }
-        public IEnumerable<PokemonListItem> GetPokemonByID()
+        public IEnumerable<PokemonListItem> GetPokemon()
         {
 
             using (var ctx = new ApplicationDbContext())

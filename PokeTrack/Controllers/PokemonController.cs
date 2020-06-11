@@ -20,7 +20,7 @@ namespace PokeTrack.Controllers
         public IHttpActionResult Get()
         {
             PokemonService pokemonService = CreatePokemonService();
-            var pokemon = pokemonService.GetPokemonByID();
+            var pokemon = pokemonService.GetPokemon();
             return Ok(pokemon);
         }
         //public IHttpActionResult GetByType()
@@ -55,6 +55,9 @@ namespace PokeTrack.Controllers
         }
         public IHttpActionResult Delete(int id)
         {
+            
+          
+
             var service = CreatePokemonService();
 
             if (!service.DeletePokemon(id))
