@@ -19,7 +19,7 @@ namespace PokeTrack.Data
         public string DietType { get; set; }
 
         public ICollection<IndividualPokemon> IndividualPokemonOfThisType { get; set; } = new List<IndividualPokemon>();
-        [Required]
+        //[Required]
         public DateTimeOffset CreatedUtc { get; set; }
 
         public DateTimeOffset? ModifiedUtc { get; set; }

@@ -10,16 +10,16 @@ namespace PokeTrack.Models.PokemonModels
 {
     public class PokemonCreate
     {
-        [Required]
-        public int PokemonID { get; set; }
+        //[Required]
+        //public int PokemonID { get; set; }
 
         [Required]
         public string PokemonName { get; set; }
         [Required]
         public string PokemonType { get; set; }
 
-        [Required]
-        public List<IndividualPokemon> IndividualPokemonOfThisType { get; set; }
+       // [Required]
+       // public List<IndividualPokemon> IndividualPokemonOfThisType { get; set; }
        
         [Required]
         public string DietType { get; set; }

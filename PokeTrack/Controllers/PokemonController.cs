@@ -20,15 +20,15 @@ namespace PokeTrack.Controllers
         public IHttpActionResult Get()
         {
             PokemonService pokemonService = CreatePokemonService();
-            var pokemon = pokemonService.GetPokemons();
+            var pokemon = pokemonService.GetPokemonByID();
             return Ok(pokemon);
         }
-        public IHttpActionResult GetByType()
-        {
-            PokemonService pokemonService = CreatePokemonService();
-            var pokemon = pokemonService.GetPokemonByType();
-            return Ok(pokemon);
-        }
+        //public IHttpActionResult GetByType()
+        //{
+        //    PokemonService pokemonService = CreatePokemonService();
+        //    var pokemon = pokemonService.GetPokemonByType();
+        //    return Ok(pokemon);
+        //}
         public IHttpActionResult Post(PokemonCreate pokemon)
         {
             if (!ModelState.IsValid)
