@@ -18,7 +18,7 @@ namespace PokeTrack.Models.PokemonModels
         [Required]
         public string PokemonType { get; set; }
 
-        [Required]
+        //[Required] 6/11 removed due postman error
         public List<IndividualPokemon> IndividualPokemonOfThisType { get; set; }
        
         [Required]

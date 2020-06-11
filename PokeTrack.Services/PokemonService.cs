@@ -22,7 +22,7 @@ namespace PokeTrack.Services
                      PokemonType = model.PokemonType,
                      DietType = model.DietType,
                      CreatedUtc = DateTimeOffset.Now,
-                     IndividualPokemonOfThisType = model.IndividualPokemonOfThisType
+                     //IndividualPokemonOfThisType = model.IndividualPokemonOfThisType
 
                  };
 
