@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IndividualPokemonMovesService.cs" />
     <Compile Include="TeamService.cs" />
     <Compile Include="IndividualPokemonService.cs" />
     <Compile Include="MoveService.cs" />

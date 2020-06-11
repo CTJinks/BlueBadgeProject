@@ -14,8 +14,8 @@ namespace PokeTrack.Models.IndividualPokemonModels
        // public int IndividualPokemonID { get; set; }
         [Required]
         public string IndividualPokemonName { get; set; }
-        [Required]
-        public int MoveID { get; set; }
+        //[Required]
+        public int IndividualPokemonMovesID { get; set; }
         [Required]
         public int PokemonID { get; set; }
         [Required]

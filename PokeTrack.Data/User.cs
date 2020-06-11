@@ -22,7 +22,7 @@ namespace PokeTrack.Data
 
         public DateTimeOffset? ModifiedUtc { get; set; }
         public ICollection<Team> Teams { get; set; } = new List<Team>();
-
+        public ICollection<IndividualPokemon> MyPokemon { get; set; }
             
 
         //need a property that holds a collection of our User's Teams

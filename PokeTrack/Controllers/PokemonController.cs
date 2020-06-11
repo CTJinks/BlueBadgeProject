@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace PokeTrack.Controllers
 {
+    //[RoutePrefix("api/pokemon")]
     [Authorize]
     public class PokemonController : ApiController
     {
@@ -23,6 +24,7 @@ namespace PokeTrack.Controllers
             var pokemon = pokemonService.GetPokemon();
             return Ok(pokemon);
         }
+       // [Route("GetByType")]
         //public IHttpActionResult GetByType()
         //{
         //    PokemonService pokemonService = CreatePokemonService();

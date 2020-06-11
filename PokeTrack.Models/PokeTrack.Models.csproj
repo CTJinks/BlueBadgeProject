@@ -59,6 +59,10 @@
     <Compile Include="IndividualPokemonModels\IndividualPokemonDetail.cs" />
     <Compile Include="IndividualPokemonModels\IndividualPokemonEdit.cs" />
     <Compile Include="IndividualPokemonModels\IndividualPokemonListItem.cs" />
+    <Compile Include="IndividualPokemonMovesModels\IndividualPokemonMovesCreate.cs" />
+    <Compile Include="IndividualPokemonMovesModels\IndividualPokemonMovesDetail.cs" />
+    <Compile Include="IndividualPokemonMovesModels\IndividualPokemonMovesEdit.cs" />
+    <Compile Include="IndividualPokemonMovesModels\IndividualPokemonMovesListItem.cs" />
     <Compile Include="MoveModels\MoveCreate.cs" />
     <Compile Include="MoveModels\MoveDetail.cs" />
     <Compile Include="MoveModels\MoveEdit.cs" />
