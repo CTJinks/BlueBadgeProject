@@ -1,4 +1,6 @@
-﻿using PokeTrack.Models.UserModels;
+﻿using Microsoft.AspNet.Identity;
+using PokeTrack.Data;
+using PokeTrack.Models.UserModels;
 using PokeTrack.Services;
 using System;
 using System.Collections.Generic;
@@ -12,8 +14,19 @@ namespace PokeTrack.Controllers
     [Authorize]
     public class UserController : ApiController
     {
+        //private UserService CreateUserServiceWithUserAccountID(int id)
+        //{
+        //    var accountWeWant = id;
+        //    var userService = new UserService();
+        //    string applicationUserID = User.Identity.GetUserId();
+        //    User user = userService.GetUserAccountByID(applicationUserID, accountWeWant);
+
+        //    var userIDAssignService = new UserService();
+        //    return userIDAssignService;
+        //}
         private UserService CreateUserService()
         {
+
             var userService = new UserService();
             return userService;
         }
@@ -54,11 +67,11 @@ namespace PokeTrack.Controllers
 
             return Ok();
         }
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult Delete(User user)
         {
             var service = CreateUserService();
 
-            if (!service.DeleteUser(id))
+            if (!service.DeleteUser(user))
                 return InternalServerError();
 
             return Ok();

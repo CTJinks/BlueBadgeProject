@@ -9,8 +9,8 @@ namespace PokeTrack.Models.MoveModels
 {
     public class MoveCreate
     {
-        [Required]
-        public int MoveID { get; set; }
+        //[Required]
+        //public int MoveID { get; set; }
         [Required]
         public string MoveName { get; set; }
         [Required]

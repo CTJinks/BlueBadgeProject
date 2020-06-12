@@ -16,7 +16,7 @@ namespace PokeTrack.Services
             var entity =
                  new Team()
                  {
-                     TeamID = model.TeamID,
+                     
                      TeamName = model.TeamName,
                      //UserName = model.UserName,
                      //PokemonTeam = model.PokemonTeam

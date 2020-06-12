@@ -16,7 +16,7 @@ namespace PokeTrack.Services
             var entity =
                  new Move()
                  {
-                     MoveID = model.MoveID,
+                    
                      MoveName = model.MoveName,
                      Damage = model.Damage,
                      CreatedUtc = DateTimeOffset.Now

@@ -10,8 +10,8 @@ namespace PokeTrack.Models.TeamModels
 {
     public class TeamCreate
     {
-        [Required]
-        public int TeamID { get; set; }
+        //[Required]
+        //public int TeamID { get; set; }
         [Required]
         public string TeamName { get; set; }
         [Required]

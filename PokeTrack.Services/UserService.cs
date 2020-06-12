@@ -97,14 +97,14 @@ namespace PokeTrack.Services
             }
         }
 
-        public bool DeleteUser(int userID)
+        public bool DeleteUser(User user)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .TrainerDb
-                    .Single(e => e.UserID == userID);
+                    .Single(e => e.UserName == user.UserName);
 
                 ctx.TrainerDb.Remove(entity);
 

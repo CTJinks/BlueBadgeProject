@@ -16,11 +16,19 @@ namespace PokeTrack.Controllers
     {
         private IndividualPokemonService CreateIndividualPokemonServiceWithUserAccountID(int id)
         { 
+        //this line associates the auto-generated Application user id with the account that we want
             var accountWeWant = id; //for the sake of clarity
-            var userService = new UserService();
-            string applicationUserID = User.Identity.GetUserId();
 
+        //This is the new instance of UserService 
+            var userService = new UserService();
+
+        //this is a getting method for the application UserID
+            string applicationUserID = User.Identity.GetUserId();//Returns Username
+
+        //This is establishing the ApplicationUser account and connecting it to "accountWeWant" variable
             User user = userService.GetUserAccountByID(applicationUserID, accountWeWant);
+
+        //This is the final step to then  connect our established User/Trainer account with the Application User account
             var pokeService = new IndividualPokemonService(user.UserID);
             return pokeService;
         }
