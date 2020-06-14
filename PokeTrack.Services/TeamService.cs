@@ -10,17 +10,17 @@ namespace PokeTrack.Services
 {
     public class TeamService
     {
-        
+        /// <summary>
+        /// Creates new Team
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>bool</returns>
         public bool CreateTeam(TeamCreate model)
         {
             var entity =
                  new Team()
                  {
-                     
                      TeamName = model.TeamName,
-                     //UserName = model.UserName,
-                     //PokemonTeam = model.PokemonTeam
-
                  };
 
             using (var ctx = new ApplicationDbContext())
@@ -28,12 +28,12 @@ namespace PokeTrack.Services
                 ctx.TeamDb.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
-
-
-
-
-
         }
+
+        /// <summary>
+        /// Retieves all instances of Team
+        /// </summary>
+        /// <returns>array</returns>
         public IEnumerable<TeamListItem> GetTeams()
         {
             using (var ctx = new ApplicationDbContext())
@@ -48,8 +48,7 @@ namespace PokeTrack.Services
                                 {
                                     TeamID = e.TeamID,
                                     TeamName = e.TeamName,
-                                    //UserName = e.IndividualPokemon.UserName,
-                                   // PokemonTeam = e.PokemonTeam
+                                    PokemonTeam = e.PokemonTeam.ToList()
                                 }
                         );
 
@@ -57,23 +56,25 @@ namespace PokeTrack.Services
             }
         }
 
-        public IEnumerable<TeamListItem> GetTeamByID()
+        /// <summary>
+        /// Retrieves specified Team using the assigned TeamID
+        /// </summary>
+        /// <returns>array</returns>
+        public IEnumerable<TeamListItem> GetTeamByID(int teamID)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
                         .TeamDb
-                        .Where(e => e.TeamID == e.TeamID)
+                        .Where(e => e.TeamID == teamID)
                         .Select(
                             e =>
                                 new TeamListItem
                                 {
                                     TeamID = e.TeamID,
                                     TeamName = e.TeamName,
-                                    //UserName = e.UserName,
-                                    //PokemonTeam = e.PokemonTeam
-
+                                    PokemonTeam = e.PokemonTeam.ToList()
                                 }
                         );
 
@@ -81,30 +82,38 @@ namespace PokeTrack.Services
             }
         }
 
-        /*public IEnumerable<TeamListItem> GetTeamByUser()
+        /// <summary>
+        /// Retrieves specified Team using the assigned TeamName
+        /// </summary>
+        /// <param name="teamName"></param>
+        /// <returns>array</returns>
+        public IEnumerable<TeamListItem> GetTeamByTeamName(string teamName)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
                         .TeamDb
-                        .Where(e => e.UserName == e.UserName)
+                        .Where(e => e.TeamName == teamName)
                         .Select(
                             e =>
                                 new TeamListItem
                                 {
                                     TeamID = e.TeamID,
                                     TeamName = e.TeamName,
-                                    UserName = e.UserName,
-                                    PokemonTeam = e.PokemonTeam
-
+                                    PokemonTeam = e.PokemonTeam.ToList()
                                 }
                         );
 
                 return query.ToArray();
             }
-        }*/
+        }
 
+        /// <summary>
+        /// Allows Application User to edit Team properties individually
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>bool</returns>
         public bool UpdateTeam(TeamEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -113,14 +122,17 @@ namespace PokeTrack.Services
                     ctx
                     .TeamDb
                     .Single(e => e.TeamID == model.TeamID);
-                entity.TeamID = model.TeamID;
                 entity.TeamName = model.TeamName;
-                //entity.PokemonTeam = model.PokemonTeam;
-
 
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        /// <summary>
+        /// Deletes spcified Team using its assigned TeamID
+        /// </summary>
+        /// <param name="teamID"></param>
+        /// <returns>bool</returns>
         public bool DeleteTeam(int teamID)
         {
             using (var ctx = new ApplicationDbContext())

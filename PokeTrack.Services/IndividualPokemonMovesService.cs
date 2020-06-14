@@ -10,14 +10,19 @@ namespace PokeTrack.Services
 {
     public class IndividualPokemonMovesService
     {
+        /// <summary>
+        /// Creates Instance of IndividualPokemonMoves and acts as a joining table between IndividualPokemon and Move
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>bool</returns>
         public bool CreateIndividualPokemonMoves(IndividualPokemonMovesCreate model)
         {
             var entity =
                  new IndividualPokemonMoves()
                  {
-                     IndividualPokemonMovesID = model.IndividualPokemonID,
                      MoveID = model.MoveID,
-                     IndividualPokemonID = model.IndividualPokemonID
+                     IndividualPokemonID = model.IndividualPokemonID,
+
                  };
 
             using (var ctx = new ApplicationDbContext())
@@ -25,15 +30,12 @@ namespace PokeTrack.Services
                 ctx.IndividualPokemonMovesDb.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
-
-
-
-
-
         }
 
-        //Come back here later to address listing properties from Move and IndividualPokemon
-
+        /// <summary>
+        /// Retrieves all instances of IndividualPokemonMoves
+        /// </summary>
+        /// <returns>array</returns>
         public IEnumerable<IndividualPokemonMovesListItem> GetIndividualPokemonMoves()
         {
             using (var ctx = new ApplicationDbContext())
@@ -47,16 +49,21 @@ namespace PokeTrack.Services
                                 new IndividualPokemonMovesListItem
                                 {
                                     IndividualPokemonMovesID = e.IndividualPokemonID,
-                                    MoveID = e.MoveID,
-                                    IndividualPokemonID = e.IndividualPokemonID
-
-
+                                    MoveName = e.Move.MoveName,
+                                    IndividualPokemonName = e.IndividualPokemon.IndividualPokemonName,
+                                    Damage = e.Move.Damage
                                 }
                         );
 
                 return query.ToArray();
             }
         }
+
+        /// <summary>
+        /// Allows ApplicationUser to update properties of specified instance of IndividualPokemonMoves
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>bool</returns>
         public bool UpdateIndividualPokemonMoves(IndividualPokemonMovesEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -68,10 +75,15 @@ namespace PokeTrack.Services
                 entity.MoveID = model.MoveID;
                 entity.IndividualPokemonID = model.IndividualPokemonID;
 
-
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        /// <summary>
+        /// Deletes specific instance of IndividualPokemonMoves using the assigned ID
+        /// </summary>
+        /// <param name="individualPokemonMovesID"></param>
+        /// <returns></returns>
         public bool DeleteIndividualPokemonMoves(int individualPokemonMovesID)
         {
             using (var ctx = new ApplicationDbContext())

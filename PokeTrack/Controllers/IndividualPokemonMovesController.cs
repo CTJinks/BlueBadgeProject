@@ -10,6 +10,8 @@ using System.Web.Http;
 
 namespace PokeTrack.Controllers
 {
+    
+    [Authorize]
     public class IndividualPokemonMovesController : ApiController
     {
         private IndividualPokemonMovesService CreateIndividualPokemonMovesService()
@@ -18,6 +20,7 @@ namespace PokeTrack.Controllers
             var individualPokemonMovesService = new IndividualPokemonMovesService();
             return individualPokemonMovesService;
         }
+
         public IHttpActionResult Get()
         {
             IndividualPokemonMovesService individualPokemonMovesService = CreateIndividualPokemonMovesService();

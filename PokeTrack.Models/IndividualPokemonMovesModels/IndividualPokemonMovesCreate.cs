@@ -9,13 +9,7 @@ namespace PokeTrack.Models.IndividualPokemonMovesModels
 {
     public class IndividualPokemonMovesCreate
     {
-        //[Required]
-        //public int IndividualPokemonMovesID { get; set; }
-
-        
         public int MoveID { get; set; }
-
-        
         public int IndividualPokemonID { get; set; }
 
     }

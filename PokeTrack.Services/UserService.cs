@@ -12,7 +12,12 @@ namespace PokeTrack.Services
     
     public class UserService
     {
-        
+        /// <summary>
+        /// Retrieves the User account using the ID of the ApplicationUser that is attached to it
+        /// </summary>
+        /// <param name="applicationUserID"></param>
+        /// <param name="userAccountID"></param>
+        /// <returns>User</returns>
         public User GetUserAccountByID(string applicationUserID, int userAccountID)
         {
             ApplicationUser appUser = new ApplicationUser();
@@ -25,6 +30,12 @@ namespace PokeTrack.Services
             return user;
 
         }
+       
+        /// <summary>
+        /// Creates new User account
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>bool</returns>
         public bool CreateUser(UserCreate model)
         {
             var entity =
@@ -40,6 +51,11 @@ namespace PokeTrack.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        /// <summary>
+        /// Retrieves all User accounts attached to the specified Application userID
+        /// </summary>
+        /// <returns>all applicable Users</returns>
         public IEnumerable<UserListItem> GetUsers()
         {
             using (var ctx = new ApplicationDbContext())
@@ -52,23 +68,28 @@ namespace PokeTrack.Services
                             e =>
                                 new UserListItem
                                 {
+                                    UserID = e.UserID,
                                     UserName = e.UserName,
                                     //CreatedUtc = e.CreatedUtc
                                 }
-                        );
+                        ); 
 
                 return query.ToArray();
             }
         }
 
-        public IEnumerable<UserListItem> GetUserByUserName()
+        /// <summary>
+        /// Retrieves user by specifying the UserName
+        /// </summary>
+        /// <returns>User(s)</returns>
+        public IEnumerable<UserListItem> GetUserByUserName(string userName)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
                         .TrainerDb
-                        .Where(e => e.UserName == e.UserName)
+                        .Where(e => e.UserName == userName)
                         .Select(
                             e =>
                                 new UserListItem
@@ -82,6 +103,12 @@ namespace PokeTrack.Services
                 return query.ToArray();
             }
         }
+
+        /// <summary>
+        /// Allows App User to update UserName
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>bool</returns>
         public bool UpdateUser(UserEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -97,6 +124,11 @@ namespace PokeTrack.Services
             }
         }
 
+        /// <summary>
+        /// Deletes the specified user account using the ID attached to it
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public bool DeleteUser(User user)
         {
             using (var ctx = new ApplicationDbContext())

@@ -22,7 +22,8 @@ namespace PokeTrack.Data
             // Add custom user claims here
             return userIdentity;
         }
-        public virtual ICollection<User> UserAccounts { get; set; }
+        // the virtual keyword, in this context, allows us to have this property without it being a column in our table
+        public virtual ICollection<User> UserAccounts { get; set; } //there are two ways to do this, see ElevenNote and how we used the OwnerID property on our Note
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

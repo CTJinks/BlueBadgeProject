@@ -1,4 +1,5 @@
-﻿using PokeTrack.Models.TeamModels;
+﻿using PokeTrack.Data;
+using PokeTrack.Models.TeamModels;
 using PokeTrack.Services;
 using System;
 using System.Collections.Generic;
@@ -6,10 +7,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace PokeTrack.Controllers
 {
     [Authorize]
+    [RoutePrefix("api/Team")]
     public class TeamController : ApiController
     {
         private TeamService CreateTeamService()
@@ -17,17 +20,32 @@ namespace PokeTrack.Controllers
             var pokemonService = new TeamService();
             return pokemonService;
         }
+
+        [Route("")]
         public IHttpActionResult Get()
         {
             TeamService pokemonService = CreateTeamService();
-            var team = pokemonService.GetTeamByID();
+            var team = pokemonService.GetTeams();
             return Ok(team);
         }
-        public IHttpActionResult GetTeams()
+
+        
+        [Route("{id:int}")]
+        [ResponseType(typeof(Team))]
+        public IHttpActionResult Get(int id)
         {
             TeamService teamService = CreateTeamService();
-            var note = teamService.GetTeams();
+            var note = teamService.GetTeamByID(id);
             return Ok(note);
+        }
+
+        [Route("{teamName:string}")]
+        [ResponseType(typeof(Team))]
+        public IHttpActionResult Get(string teamName)
+        {
+            TeamService teamService = CreateTeamService();
+            var team = teamService.GetTeamByTeamName(teamName);
+            return Ok(team);
         }
 
         public IHttpActionResult Post(TeamCreate team)
@@ -42,6 +60,7 @@ namespace PokeTrack.Controllers
 
             return Ok();
         }
+
         public IHttpActionResult Put(TeamEdit team)
         {
             if (!ModelState.IsValid)

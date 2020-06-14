@@ -9,7 +9,8 @@ namespace PokeTrack.Models.IndividualPokemonMovesModels
     public class IndividualPokemonMovesDetail
     {
         public int IndividualPokemonMovesID { get; set; }
-        public int MoveID { get; set; }
-        public int IndividualPokemonID { get; set; }
+        public int MoveName { get; set; }
+        public int Damage { get; set; }
+        public int IndividualPokemonName { get; set; }
     }
 }

@@ -21,6 +21,12 @@ namespace PokeTrack.Services
             _userID = userID;
 
         }
+
+        /// <summary>
+        /// Creates instance of a specified Pokemon that is also attached to a User account
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>bool</returns>
         public bool CreateIndividualPokemon(IndividualPokemonCreate model)
         {
             var entity =
@@ -41,6 +47,11 @@ namespace PokeTrack.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        /// <summary>
+        /// Retrieves all IndividualPokemon in IndividualPokemonDb
+        /// </summary>
+        /// <returns>array</returns>
         public IEnumerable<IndividualPokemonListItem> GetAllIndividualPokemon()
         {
             using (var ctx = new ApplicationDbContext())
@@ -58,22 +69,25 @@ namespace PokeTrack.Services
                                     PokemonName = e.Pokemon.PokemonName,
                                     PokemonType = e.Pokemon.PokemonType,
                                     DietType = e.Pokemon.DietType,
-                                    //Moves = e.Pokemon.,
-                                   // UserName = e.UserName
                                 }
                         );
 
                 return query.ToArray();
             }
         }
-        public IEnumerable<IndividualPokemonListItem> GetIndividualPokemonByID()
+
+        /// <summary>
+        /// Retrieves an IndividualPokemon using its assigned ID
+        /// </summary>
+        /// <returns>array</returns>
+        public IEnumerable<IndividualPokemonListItem> GetIndividualPokemonByID(int individualPokemonID)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
                         .IndividualPokemonDb
-                        .Where(e => e.IndividualPokemonID == e.IndividualPokemonID)
+                        .Where(e => e.IndividualPokemonID == individualPokemonID)
                         .Select(
                             e =>
                                 new IndividualPokemonListItem
@@ -83,39 +97,47 @@ namespace PokeTrack.Services
                                     PokemonName = e.Pokemon.PokemonName,
                                     PokemonType = e.Pokemon.PokemonType,
                                     DietType = e.Pokemon.DietType,
-                                   // Moves = e.Moves,
-                                   // UserName = e.UserName
                                 }
                         );
 
                 return query.ToArray();
             }
         }
-        //public IEnumerable<IndividualPokemonListItem> GetIndividualPokemonByPokemonType()
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var query =
-        //            ctx
-        //                .IndividualPokemonDb
-        //                .Where(e => e.Pokemon.PokemonType == e.Pokemon.PokemonType)
-        //                .Select(
-        //                    e =>
-        //                        new IndividualPokemonListItem
-        //                        {
-        //                            IndividualPokemonID = e.IndividualPokemonID,
-        //                            IndividualPokemonName = e.IndividualPokemonName,
-        //                            PokemonName = e.PokemonName,
-        //                            PokemonType = e.PokemonType,
-        //                            DietType = e.DietType,
-        //                            UserName =e.UserName,
-        //                            Moves = e.Moves
-        //                        }
-        //                );
 
-        //        return query.ToArray();
-        //    }
-        //}
+        /// <summary>
+        /// Retrieves an IndividualPokemon using its assigned PokemonType
+        /// </summary>
+        /// <param name="pokemonType"></param>
+        /// <returns>array</returns>
+        public IEnumerable<IndividualPokemonListItem> GetIndividualPokemonByPokemonType(string pokemonType)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .IndividualPokemonDb
+                        .Where(e => e.Pokemon.PokemonType == pokemonType)
+                        .Select(
+                            e =>
+                                new IndividualPokemonListItem
+                                {
+                                    IndividualPokemonID = e.IndividualPokemonID,
+                                    IndividualPokemonName = e.IndividualPokemonName,
+                                    PokemonName = e.Pokemon.PokemonName,
+                                    PokemonType = e.Pokemon.PokemonType,
+                                    DietType = e.Pokemon.DietType,
+                                }
+                        );
+
+                return query.ToArray();
+            }
+        }
+
+        /// <summary>
+        /// Updates Name property of a specified IndividualPokemon using the assigned ID
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>bool</returns>
         public bool UpdateIndividualPokemon(IndividualPokemonEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -124,12 +146,18 @@ namespace PokeTrack.Services
                     ctx
                     .IndividualPokemonDb
                     .Single(e => e.IndividualPokemonID == model.IndividualPokemonID);
-                //entity.Moves = model.Moves;
+          
                 entity.IndividualPokemonName = entity.IndividualPokemonName;
 
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        /// <summary>
+        /// Deletes specified IndividualPokemon using the assigned ID
+        /// </summary>
+        /// <param name="individualPokemonID"></param>
+        /// <returns>bool</returns>
         public bool DeleteIndividualPokemon(int individualPokemonID)
         {
             using (var ctx = new ApplicationDbContext())
