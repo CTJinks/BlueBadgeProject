@@ -17,10 +17,11 @@ namespace PokeTrack.Controllers
     public class IndividualPokemonController : ApiController
     {
         /// <summary>
-        /// Establishes connection between User account and ApplicationUser using IndividualPokemonService. **See Line-by-line notes**
+        /// Establishes connection between User account and ApplicationUser **See Line-by-line notes**
         /// </summary>
         /// <param name="id"></param>
         /// <returns>IndividualPokemonService</returns>
+       
         private IndividualPokemonService CreateIndividualPokemonServiceWithUserAccountID(int id)
         { 
         //this line specifies the trainer/user account for the sake of clarity
@@ -40,10 +41,6 @@ namespace PokeTrack.Controllers
             return pokeServiceConstructor;
         }
 
-        /// <summary>
-        /// Creates the instance of IndividualPokemonService
-        /// </summary>
-        /// <returns>IndividualPokemonService</returns>
         private IndividualPokemonService CreateIndividualPokemonService()
         {    
 
@@ -51,11 +48,7 @@ namespace PokeTrack.Controllers
             return individualPokemonService;
         }
 
-        /// <summary>
-        /// Retrieves all instances of IndividualPokemon within the Db
-        /// </summary>
-        /// <returns>HttpActionResult</returns>
-
+       
         [Route("")]
         public IHttpActionResult Get()
         {
@@ -64,10 +57,6 @@ namespace PokeTrack.Controllers
             return Ok(individualPokemon);
         }
 
-        /// <summary>
-        /// Retrieves a specific instance of IndividualPokemon using its assigned ID
-        /// </summary>
-        /// <returns>HttpActionResult</returns>
         
         [Route("{id:int}")]
         [ResponseType(typeof(IndividualPokemon))]
@@ -78,10 +67,7 @@ namespace PokeTrack.Controllers
             return Ok(individualPokemon);
         }
 
-        /// <summary>
-        /// Retrieves a specific instance of IndividualPokemon using its assigned PokemonType
-        /// </summary>
-        /// <returns>HttpActionResult</returns>
+        
         [Route("{pokemonType}")]
         [ResponseType(typeof(IndividualPokemon))]
         public IHttpActionResult GetByPokemonType(string pokemonType)
@@ -90,12 +76,9 @@ namespace PokeTrack.Controllers
             var individualPokemon = individualPokemonService.GetIndividualPokemonByPokemonType(pokemonType);
             return Ok(individualPokemon);
         }
-
-        /// <summary>
-        /// Creates a new IndividualPokemon that is attached to the specified User account
-        /// </summary>
-        /// <param name="individualPokemon"></param>
-        /// <returns>HttpActionResult</returns>
+       
+       
+       [Route("")]
         public IHttpActionResult Post(IndividualPokemonCreate individualPokemon)
         {
             if (!ModelState.IsValid)
@@ -109,11 +92,7 @@ namespace PokeTrack.Controllers
             return Ok();
         }
 
-        /// <summary>
-        /// Allows updates to individual properties on a specified IndividualPokemon
-        /// </summary>
-        /// <param name="individualPokemon"></param>
-        /// <returns>HttpActionResult</returns>
+        [Route("")]
         public IHttpActionResult Put(IndividualPokemonEdit individualPokemon)
         {
             if (!ModelState.IsValid)
@@ -127,11 +106,7 @@ namespace PokeTrack.Controllers
             return Ok();
         }
 
-        /// <summary>
-        /// Deletes the specified IndividualPokemon using that IndividualPokemon's ID
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns>HttpActionResult</returns>
+        [Route("")]
         public IHttpActionResult Delete(int id)
         {
             var service = CreateIndividualPokemonService();

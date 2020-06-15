@@ -21,6 +21,7 @@ namespace PokeTrack.Controllers
             return pokemonService;
         }
 
+        
         [Route("")]
         public IHttpActionResult Get()
         {
@@ -39,7 +40,8 @@ namespace PokeTrack.Controllers
             return Ok(note);
         }
 
-        [Route("{teamName:string}")]
+        
+        [Route("{teamName}")]
         [ResponseType(typeof(Team))]
         public IHttpActionResult Get(string teamName)
         {
@@ -48,6 +50,7 @@ namespace PokeTrack.Controllers
             return Ok(team);
         }
 
+        [Route("")]
         public IHttpActionResult Post(TeamCreate team)
         {
             if (!ModelState.IsValid)
@@ -61,6 +64,7 @@ namespace PokeTrack.Controllers
             return Ok();
         }
 
+        [Route("")]
         public IHttpActionResult Put(TeamEdit team)
         {
             if (!ModelState.IsValid)
@@ -73,6 +77,8 @@ namespace PokeTrack.Controllers
 
             return Ok();
         }
+
+        [Route("")]
         public IHttpActionResult Delete(int id)
         {
             var service = CreateTeamService();

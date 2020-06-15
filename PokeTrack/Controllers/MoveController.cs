@@ -22,6 +22,7 @@ namespace PokeTrack.Controllers
             return moveService;
         }
 
+        
         [Route("")]
         public IHttpActionResult Get()
         {
@@ -30,6 +31,7 @@ namespace PokeTrack.Controllers
             return Ok(moves);
         }
 
+        
         [Route("{moveName}")]
         [ResponseType(typeof(Move))]
         public IHttpActionResult Get(string moveName)
@@ -39,6 +41,7 @@ namespace PokeTrack.Controllers
             return Ok(move);
         }
 
+        
         [Route("{moveID:int}")]
         public IHttpActionResult Get(int id)
         {
@@ -46,6 +49,8 @@ namespace PokeTrack.Controllers
             var move = moveService.GetMoveByMoveID(id);
             return Ok(move);
         }
+
+        [Route("")]
         public IHttpActionResult Post(MoveCreate move)
         {
             if (!ModelState.IsValid)
@@ -58,6 +63,8 @@ namespace PokeTrack.Controllers
 
             return Ok();
         }
+
+        [Route("")]
         public IHttpActionResult Put(MoveEdit move)
         {
             if (!ModelState.IsValid)
@@ -70,6 +77,8 @@ namespace PokeTrack.Controllers
 
             return Ok();
         }
+
+        [Route("")]
         public IHttpActionResult Delete(int id)
         {
             var service = CreateMoveService();

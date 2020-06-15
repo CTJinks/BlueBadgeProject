@@ -21,12 +21,15 @@ namespace PokeTrack.Controllers
             return individualPokemonMovesService;
         }
 
+        [Route("")]
         public IHttpActionResult Get()
         {
             IndividualPokemonMovesService individualPokemonMovesService = CreateIndividualPokemonMovesService();
             var individualPokemonMoves = individualPokemonMovesService.GetIndividualPokemonMoves();
             return Ok(individualPokemonMoves);
         }
+
+        [Route("")]
         public IHttpActionResult Post(IndividualPokemonMovesCreate individualPokemonMoves)
         {
             if (!ModelState.IsValid)
@@ -39,6 +42,8 @@ namespace PokeTrack.Controllers
 
             return Ok();
         }
+
+        [Route("")]
         public IHttpActionResult Put(IndividualPokemonMovesEdit individualPokemonMoves)
         {
             if (!ModelState.IsValid)
@@ -51,6 +56,8 @@ namespace PokeTrack.Controllers
 
             return Ok();
         }
+
+        [Route("")]
         public IHttpActionResult Delete(int id)
         {
             var service = CreateIndividualPokemonMovesService();

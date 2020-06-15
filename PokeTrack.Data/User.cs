@@ -12,6 +12,8 @@ namespace PokeTrack.Data
     {
         [Key]
         public int UserID { get; set; }
+        
+        [Required]
         [ForeignKey("ApplicationUser")]
         public string ApplicationUserID { get; set; }  // there are two ways to do this, see ElevenNote and how we used the OwnerID property on our Note
         public virtual ApplicationUser ApplicationUser { get; set; }

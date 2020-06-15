@@ -23,6 +23,7 @@ namespace PokeTrack.Controllers
             return userService;
         }
 
+        
         [Route("")]
         
         public IHttpActionResult Get()
@@ -32,6 +33,7 @@ namespace PokeTrack.Controllers
             return Ok(users);
         }
 
+        
         [Route("{userName}")]
         [ResponseType(typeof(User))]
         public IHttpActionResult Get(string userName)
@@ -41,6 +43,7 @@ namespace PokeTrack.Controllers
             return Ok(user);
         }
 
+        [Route("")]
         public IHttpActionResult Post(UserCreate user)
         {
             if (!ModelState.IsValid)
@@ -54,6 +57,7 @@ namespace PokeTrack.Controllers
             return Ok();
         }
 
+        [Route("")]
         public IHttpActionResult Put(UserEdit user)
         {
             if (!ModelState.IsValid)
@@ -67,6 +71,7 @@ namespace PokeTrack.Controllers
             return Ok();
         }
 
+        [Route("")]
         public IHttpActionResult Delete(User user)
         {
             var service = CreateUserService();

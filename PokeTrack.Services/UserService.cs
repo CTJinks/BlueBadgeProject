@@ -21,12 +21,12 @@ namespace PokeTrack.Services
         public User GetUserAccountByID(string applicationUserID, int userAccountID)
         {
             ApplicationUser appUser = new ApplicationUser();
-
+            var user = new User();
             using (var ctx = new ApplicationDbContext())
             {
                 appUser = ctx.Users.Single((e => e.Id == applicationUserID));          
+           user = appUser.UserAccounts.Single(e => e.UserID == userAccountID);
             }
-           User user = appUser.UserAccounts.Single(e => e.UserID == userAccountID);
             return user;
 
         }
@@ -42,7 +42,9 @@ namespace PokeTrack.Services
                 new User()
                 {
                     UserName = model.UserName,
+                    ApplicationUserID = model.ApplicationUserID,
                     CreatedUtc = DateTimeOffset.Now
+                    
                 };
 
             using (var ctx = new ApplicationDbContext())

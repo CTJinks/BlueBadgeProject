@@ -103,6 +103,14 @@
     <Compile Include="Migrations\202006140354502_SaturdayRefactoringControllersAndNotes.Designer.cs">
       <DependentUpon>202006140354502_SaturdayRefactoringControllersAndNotes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006151509255_FixedDataBaseUserIssue.cs" />
+    <Compile Include="Migrations\202006151509255_FixedDataBaseUserIssue.Designer.cs">
+      <DependentUpon>202006151509255_FixedDataBaseUserIssue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006151530478_FixedUserDBIssue.cs" />
+    <Compile Include="Migrations\202006151530478_FixedUserDBIssue.Designer.cs">
+      <DependentUpon>202006151530478_FixedUserDBIssue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Move.cs" />
     <Compile Include="Pokemon.cs" />
@@ -126,6 +134,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006140354502_SaturdayRefactoringControllersAndNotes.resx">
       <DependentUpon>202006140354502_SaturdayRefactoringControllersAndNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006151509255_FixedDataBaseUserIssue.resx">
+      <DependentUpon>202006151509255_FixedDataBaseUserIssue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006151530478_FixedUserDBIssue.resx">
+      <DependentUpon>202006151530478_FixedUserDBIssue.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

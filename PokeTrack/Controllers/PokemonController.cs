@@ -21,6 +21,7 @@ namespace PokeTrack.Controllers
             return pokemonService;
         }
 
+        
         [Route("")]
         public IHttpActionResult Get()
         {
@@ -29,6 +30,7 @@ namespace PokeTrack.Controllers
             return Ok(pokemon);
         }
 
+       
         [Route("{type}")]
         [ResponseType(typeof(Pokemon))]
         public IHttpActionResult Get(string type)
@@ -38,7 +40,7 @@ namespace PokeTrack.Controllers
             return Ok(pokemon);
         }
 
-        
+        [Route("")]
         public IHttpActionResult Post(PokemonCreate pokemon)
         {
             if (!ModelState.IsValid)
@@ -52,6 +54,7 @@ namespace PokeTrack.Controllers
             return Ok();
         }
 
+        [Route("")]
         public IHttpActionResult Put(PokemonEdit pokemon)
         {
             if (!ModelState.IsValid)
@@ -65,6 +68,7 @@ namespace PokeTrack.Controllers
             return Ok();
         }
 
+        [Route("")]
         public IHttpActionResult Delete(int id)
         {
             var service = CreatePokemonService();
