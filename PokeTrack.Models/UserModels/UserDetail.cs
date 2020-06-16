@@ -10,6 +10,7 @@ namespace PokeTrack.Models.UserModels
     {
         public int UserID { get; set; }
         public string UserName { get; set; }
+        public string ApplicationUserName { get; set; }
 
     }
 }

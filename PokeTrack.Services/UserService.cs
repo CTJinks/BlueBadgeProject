@@ -12,12 +12,7 @@ namespace PokeTrack.Services
     
     public class UserService
     {
-        /// <summary>
-        /// Retrieves the User account using the ID of the ApplicationUser that is attached to it
-        /// </summary>
-        /// <param name="applicationUserID"></param>
-        /// <param name="userAccountID"></param>
-        /// <returns>User</returns>
+        
         public User GetUserAccountByID(string applicationUserID, int userAccountID)
         {
             ApplicationUser appUser = new ApplicationUser();
@@ -42,7 +37,6 @@ namespace PokeTrack.Services
                 new User()
                 {
                     UserName = model.UserName,
-                    ApplicationUserID = model.ApplicationUserID,
                     CreatedUtc = DateTimeOffset.Now
                     
                 };
@@ -72,7 +66,7 @@ namespace PokeTrack.Services
                                 {
                                     UserID = e.UserID,
                                     UserName = e.UserName,
-                                    //CreatedUtc = e.CreatedUtc
+                                    
                                 }
                         ); 
 
