@@ -18,8 +18,6 @@ namespace PokeTrack.Services
                  {
                      
                      TeamName = model.TeamName,
-                     //UserName = model.UserName,
-                     //PokemonTeam = model.PokemonTeam
 
                  };
 
@@ -28,12 +26,8 @@ namespace PokeTrack.Services
                 ctx.TeamDb.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
-
-
-
-
-
         }
+
         public IEnumerable<TeamListItem> GetTeams()
         {
             using (var ctx = new ApplicationDbContext())
@@ -48,8 +42,7 @@ namespace PokeTrack.Services
                                 {
                                     TeamID = e.TeamID,
                                     TeamName = e.TeamName,
-                                    //UserName = e.IndividualPokemon.UserName,
-                                   // PokemonTeam = e.PokemonTeam
+                                   
                                 }
                         );
 
@@ -57,23 +50,20 @@ namespace PokeTrack.Services
             }
         }
 
-        public IEnumerable<TeamListItem> GetTeamByID()
+        public IEnumerable<TeamListItem> GetTeamByTeamName(string teamName)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
                         .TeamDb
-                        .Where(e => e.TeamID == e.TeamID)
+                        .Where(e => e.TeamName == teamName)
                         .Select(
                             e =>
                                 new TeamListItem
                                 {
                                     TeamID = e.TeamID,
                                     TeamName = e.TeamName,
-                                    //UserName = e.UserName,
-                                    //PokemonTeam = e.PokemonTeam
-
                                 }
                         );
 
@@ -113,10 +103,8 @@ namespace PokeTrack.Services
                     ctx
                     .TeamDb
                     .Single(e => e.TeamID == model.TeamID);
-                entity.TeamID = model.TeamID;
+               
                 entity.TeamName = model.TeamName;
-                //entity.PokemonTeam = model.PokemonTeam;
-
 
                 return ctx.SaveChanges() == 1;
             }

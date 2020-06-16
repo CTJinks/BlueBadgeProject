@@ -17,13 +17,10 @@ namespace PokeTrack.Services
             var entity =
                  new Pokemon()
                  {
-                     //PokemonID = model.PokemonID,
                      PokemonName = model.PokemonName,
                      PokemonType = model.PokemonType,
                      DietType = model.DietType,
                      CreatedUtc = DateTimeOffset.Now,
-                     //IndividualPokemonOfThisType = model.IndividualPokemonOfThisType
-
                  };
 
             using (var ctx = new ApplicationDbContext())
@@ -31,12 +28,8 @@ namespace PokeTrack.Services
                 Pokemon Pokemon = ctx.PokemonDb.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
-
-
-
-
-
         }
+
         public IEnumerable<PokemonListItem> GetPokemon()
         {
 
@@ -100,11 +93,10 @@ namespace PokeTrack.Services
                     .Single(e => e.PokemonID == model.PokemonID);
                 entity.PokemonName = model.PokemonName;
                 entity.PokemonType = model.PokemonType;
-                entity.DietType = entity.DietType;
+                entity.DietType = model.DietType;
 
                 return ctx.SaveChanges() == 1;
             }
-
             
         }
         public bool DeletePokemon(int pokemonID)

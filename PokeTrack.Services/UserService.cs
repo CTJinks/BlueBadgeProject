@@ -53,7 +53,6 @@ namespace PokeTrack.Services
                                 new UserListItem
                                 {
                                     UserName = e.UserName,
-                                    //CreatedUtc = e.CreatedUtc
                                 }
                         );
 
@@ -91,12 +90,10 @@ namespace PokeTrack.Services
                     .TrainerDb
                     .Single(e => e.UserID == e.UserID);
                 entity.UserName = model.UserName;
-                //entity.ModifiedUtc = DateTimeOffset.Now;
 
                 return ctx.SaveChanges() == 1;
             }
         }
-
         public bool DeleteUser(User user)
         {
             using (var ctx = new ApplicationDbContext())

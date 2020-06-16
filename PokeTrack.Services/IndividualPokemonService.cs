@@ -26,13 +26,11 @@ namespace PokeTrack.Services
             var entity =
                  new IndividualPokemon
                  {
-                   // IndividualPokemonID = model.IndividualPokemonID,
                   
                   IndividualPokemonName = model.IndividualPokemonName,
                   PokemonID = model.PokemonID,
                   UserID = _userID,
                   TeamID = model.TeamID
-                  
                  };
 
             using (var ctx = new ApplicationDbContext())
@@ -58,8 +56,6 @@ namespace PokeTrack.Services
                                     PokemonName = e.Pokemon.PokemonName,
                                     PokemonType = e.Pokemon.PokemonType,
                                     DietType = e.Pokemon.DietType,
-                                    //Moves = e.Pokemon.,
-                                   // UserName = e.UserName
                                 }
                         );
 
@@ -83,8 +79,6 @@ namespace PokeTrack.Services
                                     PokemonName = e.Pokemon.PokemonName,
                                     PokemonType = e.Pokemon.PokemonType,
                                     DietType = e.Pokemon.DietType,
-                                   // Moves = e.Moves,
-                                   // UserName = e.UserName
                                 }
                         );
 
@@ -124,8 +118,8 @@ namespace PokeTrack.Services
                     ctx
                     .IndividualPokemonDb
                     .Single(e => e.IndividualPokemonID == model.IndividualPokemonID);
-                //entity.Moves = model.Moves;
-                entity.IndividualPokemonName = entity.IndividualPokemonName;
+               
+                entity.IndividualPokemonName = model.IndividualPokemonName;
 
                 return ctx.SaveChanges() == 1;
             }

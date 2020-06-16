@@ -16,7 +16,6 @@ namespace PokeTrack.Services
             var entity =
                  new Move()
                  {
-                    
                      MoveName = model.MoveName,
                      Damage = model.Damage,
                      CreatedUtc = DateTimeOffset.Now
@@ -27,12 +26,8 @@ namespace PokeTrack.Services
                 ctx.MoveDb.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
-
-
-
-
-
         }
+
         public IEnumerable<MoveListItem> GetMoves()
         {
             using (var ctx = new ApplicationDbContext())

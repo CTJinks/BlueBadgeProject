@@ -15,8 +15,7 @@ namespace PokeTrack.Services
             var entity =
                  new IndividualPokemonMoves()
                  {
-                     IndividualPokemonMovesID = model.IndividualPokemonID,
-                     MoveID = model.MoveID,
+                     MoveID= model.MoveID,
                      IndividualPokemonID = model.IndividualPokemonID
                  };
 
@@ -25,11 +24,6 @@ namespace PokeTrack.Services
                 ctx.IndividualPokemonMovesDb.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
-
-
-
-
-
         }
 
         //Come back here later to address listing properties from Move and IndividualPokemon
