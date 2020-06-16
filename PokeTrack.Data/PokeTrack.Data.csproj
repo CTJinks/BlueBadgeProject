@@ -99,6 +99,10 @@
     <Compile Include="Migrations\202006121447448_FridayMorningChanges.Designer.cs">
       <DependentUpon>202006121447448_FridayMorningChanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006161431355_TuesdayMorningJenna.cs" />
+    <Compile Include="Migrations\202006161431355_TuesdayMorningJenna.Designer.cs">
+      <DependentUpon>202006161431355_TuesdayMorningJenna.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Move.cs" />
     <Compile Include="Pokemon.cs" />
@@ -119,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006121447448_FridayMorningChanges.resx">
       <DependentUpon>202006121447448_FridayMorningChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006161431355_TuesdayMorningJenna.resx">
+      <DependentUpon>202006161431355_TuesdayMorningJenna.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

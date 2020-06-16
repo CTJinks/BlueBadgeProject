@@ -37,12 +37,6 @@ namespace PokeTrack.Controllers
             return Ok(users);
         }
 
-        //public IHttpActionResult Get()
-        //{
-        //    UserService userService = CreateUserService();
-        //    var user = userService.GetUserByUserName();
-        //    return Ok(user);
-        //}
         public IHttpActionResult Post(UserCreate user)
         {
             if (!ModelState.IsValid)

@@ -17,13 +17,8 @@ namespace PokeTrack.Controllers
             var pokemonService = new TeamService();
             return pokemonService;
         }
+       
         public IHttpActionResult Get()
-        {
-            TeamService pokemonService = CreateTeamService();
-            var team = pokemonService.GetTeamByID();
-            return Ok(team);
-        }
-        public IHttpActionResult GetTeams()
         {
             TeamService teamService = CreateTeamService();
             var note = teamService.GetTeams();

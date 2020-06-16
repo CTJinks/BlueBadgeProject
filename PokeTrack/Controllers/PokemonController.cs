@@ -24,13 +24,7 @@ namespace PokeTrack.Controllers
             var pokemon = pokemonService.GetPokemon();
             return Ok(pokemon);
         }
-       // [Route("GetByType")]
-        //public IHttpActionResult GetByType()
-        //{
-        //    PokemonService pokemonService = CreatePokemonService();
-        //    var pokemon = pokemonService.GetPokemonByType();
-        //    return Ok(pokemon);
-        //}
+       
         public IHttpActionResult Post(PokemonCreate pokemon)
         {
             if (!ModelState.IsValid)
