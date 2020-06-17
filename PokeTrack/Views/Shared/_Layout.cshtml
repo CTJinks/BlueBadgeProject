@@ -1,4 +1,17 @@
 ﻿<!DOCTYPE html>
+<style>
+    body {
+        background-image: url("https://yousillymommy.files.wordpress.com/2016/08/pokemon-ball-colors-simple-background-1440x900.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .body-content {
+        background-color: white;
+        border: 5px solid black;
+        border-radius: 15px;
+    }
+</style>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -16,7 +29,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("PokeTrack", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -39,3 +52,4 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
